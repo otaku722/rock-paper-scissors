@@ -1,18 +1,15 @@
+computer = getComputerChoice();
+
 function getComputerChoice() {
+    // Stores random number between 1 and 3
+    let choice = Math.floor(Math.random() * 3);
 
-/* 
-
-Declare variable to store computer choice.
-
-Get a random number between 1 and 3.
-
-If number is 1:
-    return rock
-Else if number is 2:
-    return paper
-Else
-    return scissors
-
-*/
-
+    // Return "rock", "paper", or "scissors" based on random number
+    if (choice === 0) {
+        return "rock";
+    } else if (choice === 1) {
+        return "paper";
+    } else {
+        return "scissors";
+    }
 }
