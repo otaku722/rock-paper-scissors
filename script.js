@@ -1,4 +1,7 @@
 computer = getComputerChoice();
+human = getHumanChoice();
+
+console.log(human);
 
 function getComputerChoice() {
     // Stores random number between 1 and 3
@@ -16,14 +19,6 @@ function getComputerChoice() {
 
 function getHumanChoice() {
 
-/*
-
-Declare a variable to store user choice
-
-Prompt user for their choice
-
-Return user choice
-
-*/
-
+    // Return user input in lowercase
+    return prompt("Rock, paper, or scissors?").toLowerCase();
 }
