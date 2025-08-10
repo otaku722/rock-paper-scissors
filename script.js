@@ -13,3 +13,17 @@ function getComputerChoice() {
         return "scissors";
     }
 }
+
+function getHumanChoice() {
+
+/*
+
+Declare a variable to store user choice
+
+Prompt user for their choice
+
+Return user choice
+
+*/
+
+}
