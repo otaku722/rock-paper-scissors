@@ -17,24 +17,19 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-
     // Return user input in lowercase
     return prompt("Rock, paper, or scissors?").toLowerCase();
 }
 
 function playRound(computerChoice, humanChoice) {
-    /* 
-    
-    Compare computer and human choices
-
-    If human beats computer:
-        Print "You win! Your choice beats the computer's choice"
-    Else if computer beats human:
-        Print "You lose! The computer's choice beats your choice"
-    Else:
-        Print "Tie!"
-
-    Increment winning player's score by 1
-
-    */
+    // Check which player won and print to screen. Increase winning player's score by 1.
+    if ((computerChoice === "rock" && humanChoice === "paper") || (computerChoice === "paper" && humanChoice === "scissors") || (computerChoice === "scissors" && humanChoice === "rock")) {
+        console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+        humanScore++;
+    } else if (computerChoice === humanChoice) {
+        console.log("You tie")
+    } else {
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+        computerScore++;
+    }
 }
