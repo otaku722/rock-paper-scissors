@@ -1,7 +1,3 @@
-// Track each player's score
-let humanScore = 0;
-let computerScore = 0;
-
 function getComputerChoice() {
     // Stores random number between 1 and 3
     let choice = Math.floor(Math.random() * 3);
@@ -32,4 +28,18 @@ function playRound(computerChoice, humanChoice) {
         console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
         computerScore++;
     }
+}
+
+function playGame() {
+    // Track each player's score
+    let humanScore = 0;
+    let computerScore = 0;
+
+    /*
+    
+    Create loop to play round 5 times
+
+    At end of game compare player scores and print the winner or print "Tie!"
+    
+    */
 }
