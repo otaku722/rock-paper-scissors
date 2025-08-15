@@ -1,3 +1,9 @@
+let humanScore = 0;
+let computerScore = 0;
+let round = 0;
+let buttons = document.querySelectorAll('button');
+let results = document.querySelector("#results");
+
 // Play the game
 playGame();
 
@@ -15,42 +21,52 @@ function getComputerChoice() {
     }
 }
 
-function getHumanChoice() {
-    // Return user input in lowercase
-    return prompt("Rock, paper, or scissors?").toLowerCase();
+function getHumanChoice(e) {
+    return e.target.id;
 }
+
+function playRound(e) {
+    let humanChoice = getHumanChoice(e);
+    let computerChoice = getComputerChoice();
+    let resultText = document.createElement("p");
+
+    // Check which player won a round and print to screen. Increase winning player's score by 1.
+    if ((computerChoice === "rock" && humanChoice === "paper") || (computerChoice === "paper" && humanChoice === "scissors") || (computerChoice === "scissors" && humanChoice === "rock")) {
+        resultText.innerText = `You win! ${humanChoice} beats ${computerChoice}`;
+        humanScore++;
+    } else if (computerChoice === humanChoice) {
+        resultText.innerText = "You tie!";
+    } else {
+        resultText.innerText = `You lose! ${computerChoice} beats ${humanChoice}`;
+        computerScore++;
+    }
+
+    results.appendChild(resultText);
+
+    round++;
+
+    if (round === 5) {
+        buttons.forEach(button => button.removeEventListener("click", playRound));
+
+        printWinner();
+    }
+}   
 
 function playGame(score) {
     let rounds = 5;
 
-    // Track each player's score
-    let humanScore = 0;
-    let computerScore = 0;
+    buttons.forEach(button => {
+        button.addEventListener("click", playRound);
+    });
+}
 
-    // Play round "rounds" times
-    for (let i = 0; i < rounds; i++) {
-        playRound(getComputerChoice(), getHumanChoice());
-    }
-
-    // Print winner
+function printWinner() {
+    results.appendChild(document.createTextNode("Game Result: "));
     if (humanScore > computerScore) {
-        console.log("You win the game!");
+        results.appendChild(document.createTextNode("You win the game!"));
     } else if (humanScore < computerScore) {
-        console.log("You lose the game!");
+        results.appendChild(document.createTextNode("You lose the game!"));
     } else {
-        console.log("Tie!");
+        results.appendChild(document.createTextNode("Tie!"));
     }
-
-        function playRound(computerChoice, humanChoice) {
-        // Check which player won a round and print to screen. Increase winning player's score by 1.
-        if ((computerChoice === "rock" && humanChoice === "paper") || (computerChoice === "paper" && humanChoice === "scissors") || (computerChoice === "scissors" && humanChoice === "rock")) {
-            console.log(`You win! ${humanChoice} beats ${computerChoice}`);
-            humanScore++;
-        } else if (computerChoice === humanChoice) {
-            console.log("You tie");
-        } else {
-            console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
-            computerScore++;
-        }
-    }   
 }
